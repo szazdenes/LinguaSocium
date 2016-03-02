@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/home/denes/Documents/Labor/LinguaSocium/android-build/libs/QtAndroidAccessibility-bundled.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="0675226e28c563c1968478c946b46685f49f048c">
+        <dex dex="/home/denes/Documents/Labor/LinguaSocium/android-build/build/intermediates/pre-dexed/debug/QtAndroidAccessibility-bundled-5f37c01f3fb2be3b4c20c6016f60c92b62c62295.jar" />
+    </item>
+    <item
+        jar="/home/denes/Documents/Labor/LinguaSocium/android-build/libs/QtAndroid-bundled.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="ca159704adaf985e8454667b63cf852392b00f76">
+        <dex dex="/home/denes/Documents/Labor/LinguaSocium/android-build/build/intermediates/pre-dexed/debug/QtAndroid-bundled-57d7c95b414a2c77a0f60ee0d72ecfaea33bade5.jar" />
+    </item>
+
+</items>
