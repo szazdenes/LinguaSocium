@@ -1,3 +1,10 @@
 init
 add
 /home/denes/Documents/Labor/LinguaSocium/android-build
+file:///home/denes/Documents/Labor/LinguaSocium/android-build
+android-build/
+bin/
+moc/
+obj/
+ui/
+LinguaSocium.pro.user
