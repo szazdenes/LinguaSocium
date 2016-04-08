@@ -8,3 +8,7 @@ moc/
 obj/
 ui/
 LinguaSocium.pro.user
+android-libLinguaSocium.so-deployment-settings.json
+android_release.keystore
+app_process
+libc.so
