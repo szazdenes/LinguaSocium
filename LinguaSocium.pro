@@ -17,12 +17,14 @@ RCC_DIR = ./rcc
 UI_DIR = ./ui
 
 
-SOURCES += main.cpp\
-        lingua.cpp
+SOURCES += main.cpp \
+    mainwindow.cpp
 
-HEADERS  += lingua.h
+HEADERS  += \
+    mainwindow.h
 
-FORMS    += lingua.ui
+FORMS    += \
+    mainwindow.ui
 
 CONFIG += mobility
 MOBILITY = 
