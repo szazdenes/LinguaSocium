@@ -20,17 +20,26 @@ UI_DIR = ./ui
 SOURCES += main.cpp \
     mainwindow.cpp \
     loginform.cpp \
-    logindialog.cpp
+    logindialog.cpp \
+    registrationdialog.cpp \
+    registrationform.cpp \
+    warningdialog.cpp
 
 HEADERS  += \
     mainwindow.h \
     loginform.h \
-    logindialog.h
+    logindialog.h \
+    registrationdialog.h \
+    registrationform.h \
+    warningdialog.h
 
 FORMS    += \
     mainwindow.ui \
     loginform.ui \
-    logindialog.ui
+    logindialog.ui \
+    registrationdialog.ui \
+    registrationform.ui \
+    warningdialog.ui
 
 CONFIG += mobility
 MOBILITY = 
