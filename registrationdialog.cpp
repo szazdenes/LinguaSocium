@@ -25,27 +25,18 @@ void RegistrationDialog::on_calcelPushButton_clicked()
 
 void RegistrationDialog::on_okPushButton_clicked()
 {
-    if(ui->nameLineEdit->text().isEmpty()){
-        warn = new WarningDialog(this, "Empty name line");
-        connect(warn, &WarningDialog::signalDeleteDialog, this, &RegistrationDialog::slotDeleteWarning);
-        warn->exec();
-    }
-    if(ui->pwdLineEdit->text().isEmpty()){
-        warn = new WarningDialog(this, "Empty password line");
-        connect(warn, &WarningDialog::signalDeleteDialog, this, &RegistrationDialog::slotDeleteWarning);
-        warn->exec();
-    }
+    if(ui->nameLineEdit->text().isEmpty())
+        emit signalWarning("Empty name line");
+
+    if(ui->pwdLineEdit->text().isEmpty())
+        emit signalWarning("Empty password line");
+
     if(ui->confPwdLineEdit->text().isEmpty())
-    {
-        warn = new WarningDialog(this, "Empty confirm password line");
-        connect(warn, &WarningDialog::signalDeleteDialog, this, &RegistrationDialog::slotDeleteWarning);
-        warn->exec();
-    }
-    if(ui->pwdLineEdit->text() != ui->confPwdLineEdit->text() && !ui->pwdLineEdit->text().isEmpty() && !ui->confPwdLineEdit->text().isEmpty()){
-        warn = new WarningDialog(this, "Confirmed password different from password");
-        connect(warn, &WarningDialog::signalDeleteDialog, this, &RegistrationDialog::slotDeleteWarning);
-        warn->exec();
-    }
+        emit signalWarning("Empty confirm password line");
+
+    if(ui->pwdLineEdit->text() != ui->confPwdLineEdit->text() && !ui->pwdLineEdit->text().isEmpty() && !ui->confPwdLineEdit->text().isEmpty())
+        emit signalWarning("Confirmed password different from password");
+
     if(!ui->nameLineEdit->text().isEmpty() && !ui->pwdLineEdit->text().isEmpty() && !ui->confPwdLineEdit->text().isEmpty() && ui->pwdLineEdit->text() == ui->confPwdLineEdit->text()){
         regdata.append(ui->nameLineEdit->text());
         regdata.append(ui->pwdLineEdit->text());
@@ -54,9 +45,4 @@ void RegistrationDialog::on_okPushButton_clicked()
         emit signalClose();
     }
 
-}
-
-void RegistrationDialog::slotDeleteWarning()
-{
-    delete warn;
 }

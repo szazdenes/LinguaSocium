@@ -18,11 +18,15 @@ public:
     explicit RegistrationForm(QWidget *parent = 0);
     ~RegistrationForm();
 
+signals:
+    void signalWarning(QString warn);
+
 private slots:
     void on_pushButton_clicked();
     void on_pushButton_2_clicked();
     void slotDeleteForm();
     void slotProcessRegistration(QStringList regData);
+    void slotSendWarning(QString warn);
 
 private:
     Ui::RegistrationForm *ui;

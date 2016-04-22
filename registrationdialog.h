@@ -21,15 +21,14 @@ signals:
     void signalRegistrationOk(bool regOK);
     void signalClose();
     void signalSendRegData(QStringList regData);
+    void signalWarning(QString warning);
 
 private slots:
     void on_calcelPushButton_clicked();
     void on_okPushButton_clicked();
-    void slotDeleteWarning();
 
 private:
     Ui::RegistrationDialog *ui;
-    WarningDialog *warn;
     QStringList regdata;
 };
 

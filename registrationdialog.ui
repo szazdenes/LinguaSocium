@@ -76,10 +76,21 @@
            <widget class="QLineEdit" name="nameLineEdit"/>
           </item>
           <item row="1" column="1">
-           <widget class="QLineEdit" name="pwdLineEdit"/>
+           <widget class="QLineEdit" name="pwdLineEdit">
+            <property name="echoMode">
+             <enum>QLineEdit::Password</enum>
+            </property>
+            <property name="clearButtonEnabled">
+             <bool>false</bool>
+            </property>
+           </widget>
           </item>
           <item row="2" column="1">
-           <widget class="QLineEdit" name="confPwdLineEdit"/>
+           <widget class="QLineEdit" name="confPwdLineEdit">
+            <property name="echoMode">
+             <enum>QLineEdit::Password</enum>
+            </property>
+           </widget>
           </item>
          </layout>
         </item>

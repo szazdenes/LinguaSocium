@@ -18,6 +18,7 @@ void RegistrationForm::on_pushButton_clicked()
     reg = new RegistrationDialog(this, "Tutor");
     connect(reg, &RegistrationDialog::signalClose, this, &RegistrationForm::slotDeleteForm);
     connect(reg, &RegistrationDialog::signalSendRegData, this, &RegistrationForm::slotProcessRegistration);
+    connect(reg, &RegistrationDialog::signalWarning, this, &RegistrationForm::slotSendWarning);
     reg->exec();
 }
 
@@ -26,6 +27,7 @@ void RegistrationForm::on_pushButton_2_clicked()
     reg = new RegistrationDialog(this, "Student");
     connect(reg, &RegistrationDialog::signalClose, this, &RegistrationForm::slotDeleteForm);
     connect(reg, &RegistrationDialog::signalSendRegData, this, &RegistrationForm::slotProcessRegistration);
+    connect(reg, &RegistrationDialog::signalWarning, this, &RegistrationForm::slotSendWarning);
     reg->exec();
 }
 
@@ -41,5 +43,10 @@ void RegistrationForm::slotProcessRegistration(QStringList regData)
     for (int s = 0; s < 6 ; ++s)
         randCode[s] = QChar('A' + char(qrand() % ('Z' - 'A')));
     qDebug() << randCode;
+}
+
+void RegistrationForm::slotSendWarning(QString warn)
+{
+    emit signalWarning(warn);
 }
 

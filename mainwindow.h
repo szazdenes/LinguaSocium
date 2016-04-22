@@ -30,11 +30,13 @@ private slots:
     void slotRegDelete();
     void slotRegistrationOK(bool regOK);
     void slotWarningDialogOpen(QString warning);
+    void slotDeleteWarning();
 
 
 private:
     Ui::MainWindow *ui;
     RegistrationForm *reg;
+    WarningDialog *warn;
 
     bool registered;
 };

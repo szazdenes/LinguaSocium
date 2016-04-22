@@ -15,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(this, &MainWindow::signalChangeForm, ui->loginWidget, &LoginForm::hide);
     connect(ui->loginWidget, &LoginForm::signalRegistrationOk, this, &MainWindow::slotRegistrationOK);
     connect(ui->loginWidget, &LoginForm::signalWarning, this, &MainWindow::slotWarningDialogOpen);
+    connect(ui->registrationWidget, &RegistrationForm::signalWarning, this, &MainWindow::slotWarningDialogOpen);
 
 }
 
@@ -47,10 +48,12 @@ void MainWindow::slotRegistrationOK(bool regOK)
 
 void MainWindow::slotWarningDialogOpen(QString warning)
 {
-    if(registered == false){
-        WarningDialog wd(this, warning);
-        wd.exec();
-    }
-    else
-        return;
+        warn = new WarningDialog(this, warning);
+        connect(warn, &WarningDialog::signalDeleteDialog, this, &MainWindow::slotDeleteWarning);
+        warn->exec();
+}
+
+void MainWindow::slotDeleteWarning()
+{
+    delete warn;
 }
