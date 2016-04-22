@@ -15,11 +15,31 @@ RegistrationForm::~RegistrationForm()
 
 void RegistrationForm::on_pushButton_clicked()
 {
-
+    reg = new RegistrationDialog(this, "Tutor");
+    connect(reg, &RegistrationDialog::signalClose, this, &RegistrationForm::slotDeleteForm);
+    connect(reg, &RegistrationDialog::signalSendRegData, this, &RegistrationForm::slotProcessRegistration);
+    reg->exec();
 }
 
 void RegistrationForm::on_pushButton_2_clicked()
 {
+    reg = new RegistrationDialog(this, "Student");
+    connect(reg, &RegistrationDialog::signalClose, this, &RegistrationForm::slotDeleteForm);
+    connect(reg, &RegistrationDialog::signalSendRegData, this, &RegistrationForm::slotProcessRegistration);
+    reg->exec();
+}
 
+void RegistrationForm::slotDeleteForm()
+{
+    delete reg;
+}
+
+void RegistrationForm::slotProcessRegistration(QStringList regData)
+{
+    QString randCode;
+    randCode.resize(6);
+    for (int s = 0; s < 6 ; ++s)
+        randCode[s] = QChar('A' + char(qrand() % ('Z' - 'A')));
+    qDebug() << randCode;
 }
 

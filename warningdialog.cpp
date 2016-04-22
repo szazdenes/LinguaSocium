@@ -16,6 +16,6 @@ WarningDialog::~WarningDialog()
 
 void WarningDialog::on_pushButton_clicked()
 {
-    emit accepted();
-    this->close();
+    accept();
+    emit signalDeleteDialog();
 }

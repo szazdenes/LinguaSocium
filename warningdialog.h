@@ -15,6 +15,9 @@ public:
     explicit WarningDialog(QWidget *parent = 0, QString warning = "");
     ~WarningDialog();
 
+signals:
+    void signalDeleteDialog();
+
 private slots:
     void on_pushButton_clicked();
 
