@@ -9,6 +9,7 @@ RegistrationDialog::RegistrationDialog(QWidget *parent, QString mode) :
     ui->modeLabel->setText(mode + " registration");
     regdata.clear();
     regdata.append(mode);
+    ui->okPushButton->setFocus();
 }
 
 RegistrationDialog::~RegistrationDialog()
@@ -42,6 +43,7 @@ void RegistrationDialog::on_okPushButton_clicked()
         regdata.append(ui->pwdLineEdit->text());
         emit signalSendRegData(regdata);
         this->close();
+        emit signalSwitchToLoginForm();
         emit signalClose();
     }
 

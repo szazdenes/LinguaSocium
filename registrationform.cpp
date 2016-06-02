@@ -19,6 +19,7 @@ void RegistrationForm::on_pushButton_clicked()
     connect(reg, &RegistrationDialog::signalClose, this, &RegistrationForm::slotDeleteForm);
     connect(reg, &RegistrationDialog::signalSendRegData, this, &RegistrationForm::slotProcessRegistration);
     connect(reg, &RegistrationDialog::signalWarning, this, &RegistrationForm::slotSendWarning);
+    connect(reg, &RegistrationDialog::signalSwitchToLoginForm, this, &RegistrationForm::slotSwtichToLoginForm);
     reg->exec();
 }
 
@@ -28,6 +29,7 @@ void RegistrationForm::on_pushButton_2_clicked()
     connect(reg, &RegistrationDialog::signalClose, this, &RegistrationForm::slotDeleteForm);
     connect(reg, &RegistrationDialog::signalSendRegData, this, &RegistrationForm::slotProcessRegistration);
     connect(reg, &RegistrationDialog::signalWarning, this, &RegistrationForm::slotSendWarning);
+    connect(reg, &RegistrationDialog::signalSwitchToLoginForm, this, &RegistrationForm::slotSwtichToLoginForm);
     reg->exec();
 }
 
@@ -39,14 +41,22 @@ void RegistrationForm::slotDeleteForm()
 void RegistrationForm::slotProcessRegistration(QStringList regData)
 {
     QString randCode;
+    QStringList regdataWithCode = regData;
     randCode.resize(6);
     for (int s = 0; s < 6 ; ++s)
         randCode[s] = QChar('A' + char(qrand() % ('Z' - 'A')));
-    qDebug() << randCode;
+    regdataWithCode.append(randCode);
+    emit signalSendRegDataWithCode(regdataWithCode);
 }
 
 void RegistrationForm::slotSendWarning(QString warn)
 {
     emit signalWarning(warn);
+}
+
+void RegistrationForm::slotSwtichToLoginForm()
+{
+    this->hide();
+    emit signalChangeToLoginForm();
 }
 

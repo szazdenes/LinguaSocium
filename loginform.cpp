@@ -6,6 +6,7 @@ LoginForm::LoginForm(QWidget *parent) :
     ui(new Ui::LoginForm)
 {
     ui->setupUi(this);
+    regDataMap.clear();
 }
 
 LoginForm::~LoginForm()
@@ -13,18 +14,29 @@ LoginForm::~LoginForm()
     delete ui;
 }
 
+void LoginForm::slotGetRegDataMap(QMap<QString, QMap<QString, QString> > regdataMap)
+{
+    regDataMap = regdataMap;
+}
+
 void LoginForm::on_tutorPushButton_clicked()
 {
-    emit signalLogin("tutor");
-    emit signalRegistrationOk(false);
-    emit signalWarning("Registration required");
+    if(regDataMap.isEmpty()){
+        emit signalRegistrationOk(false);
+        emit signalWarning("Registration required");
+    }
+    else
+        emit signalLogin("tutor");
 }
 
 void LoginForm::on_studentPushButton_clicked()
 {
-    emit signalLogin("student");
-    emit signalRegistrationOk(false);
-    emit signalWarning("Registration required");
+    if(regDataMap.isEmpty()){
+        emit signalRegistrationOk(false);
+        emit signalWarning("Registration required");
+    }
+    else
+        emit signalLogin("student");
 }
 
 void LoginForm::on_registrationpushButton_clicked()

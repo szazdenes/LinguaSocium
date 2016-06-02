@@ -22,6 +22,7 @@ signals:
     void signalClose();
     void signalSendRegData(QStringList regData);
     void signalWarning(QString warning);
+    void signalSwitchToLoginForm();
 
 private slots:
     void on_calcelPushButton_clicked();

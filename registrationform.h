@@ -20,6 +20,8 @@ public:
 
 signals:
     void signalWarning(QString warn);
+    void signalChangeToLoginForm();
+    void signalSendRegDataWithCode(QStringList regdata);
 
 private slots:
     void on_pushButton_clicked();
@@ -27,6 +29,7 @@ private slots:
     void slotDeleteForm();
     void slotProcessRegistration(QStringList regData);
     void slotSendWarning(QString warn);
+    void slotSwtichToLoginForm();
 
 private:
     Ui::RegistrationForm *ui;

@@ -2,6 +2,7 @@
 #define LOGINFORM_H
 
 #include <QWidget>
+#include <QMap>
 
 #include "logindialog.h"
 
@@ -23,15 +24,17 @@ signals:
     void signalRegistrationOk(bool regOK);
     void signalWarning(QString warning);
 
+public slots:
+    void slotGetRegDataMap(QMap<QString, QMap<QString, QString> > regdataMap);
+
 private slots:
     void on_tutorPushButton_clicked();
-
     void on_studentPushButton_clicked();
-
     void on_registrationpushButton_clicked();
 
 private:
     Ui::LoginForm *ui;
+    QMap<QString, QMap<QString, QString> > regDataMap;
 };
 
 #endif // LOGINFORM_H
